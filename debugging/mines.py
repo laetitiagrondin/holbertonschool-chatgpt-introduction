@@ -37,7 +37,7 @@ class Minesweeper:
                 if 0 <= nx < self.width and 0 <= ny < self.height:
                     if (ny * self.width + nx) in self.mines:
                         count += 1
-    return count
+        return count
 
     def reveal(self, x, y):
         if (y * self.width + x) in self.mines:
@@ -51,26 +51,26 @@ class Minesweeper:
                         self.reveal(nx, ny)
         return True
 
-def play(self):
-    while True:
-        self.print_board()
-        try:
-            x = int(input("Enter x coordinate: "))
-            y = int(input("Enter y coordinate: "))
+    def play(self):
+        while True:
+            self.print_board()
+            try:
+                x = int(input("Enter x coordinate: "))
+                y = int(input("Enter y coordinate: "))
 
-            if not (0 <= x < self.width and 0 <= y < self.height):
-                print("Coordinates out of range.")
+                if not (0 <= x < self.width and 0 <= y < self.height):
+                    print("Coordinates out of range.")
+                    input("Press Enter to continue...")
+                    continue
+
+                if not self.reveal(x, y):
+                    self.print_board(reveal=True)
+                    print("Game Over! You hit a mine.")
+                    break
+
+            except ValueError:
+                print("Invalid input. Please enter numbers only.")
                 input("Press Enter to continue...")
-                continue
-
-            if not self.reveal(x, y):
-                self.print_board(reveal=True)
-                print("Game Over! You hit a mine.")
-                break
-
-        except ValueError:
-            print("Invalid input. Please enter numbers only.")
-            input("Press Enter to continue...")
 
 if __name__ == "__main__":
     game = Minesweeper()
