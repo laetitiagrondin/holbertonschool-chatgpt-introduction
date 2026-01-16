@@ -6,7 +6,7 @@ def print_board(board):
 def check_winner(board):
     for row in board:
         if row.count(row[0]) == len(row) and row[0] != " ":
-        return row[0]
+            return row[0]
 
     for col in range(len(board[0])):
         if board[0][col] == board[1][col] == board[2][col] and board[0][col] != " ":
