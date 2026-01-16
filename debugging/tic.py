@@ -33,6 +33,10 @@ def tic_tac_toe():
         if board[row][col] == " ":
             board[row][col] = player
             winner = check_winner(board)
+            if winner is None and all(cell != " " for r in board for cell in r):
+                print_board(board)
+                print("It's a tie!")
+                return
             player = "O" if player == "X" else "X"
         else:
             print("That spot is already taken! Try again.")
